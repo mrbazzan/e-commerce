@@ -3,6 +3,11 @@
 
 venv/
 
+*.sqlite3
+
+admin_venv/
+main_venv/
+
 __pycache__/
 
 *.pyc
