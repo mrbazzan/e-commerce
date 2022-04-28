@@ -9,3 +9,16 @@ services:
     volumes:
       - "./admin:/app"
       - /app/admin_venv/
+    depends_on:  # db should run before backend
+      - db
+
+  db:
+    image: mysql:5.7
+    restart: always  # prevent mysql stopping abruptly.
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: admin
+    volumes:  # store mysql data
+      - ".dbdata:/var/lib/mysql"
+    ports:
+      - "33066:3306"

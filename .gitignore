@@ -4,6 +4,7 @@
 venv/
 
 *.sqlite3
+.dbdata/
 
 admin_venv/
 main_venv/
