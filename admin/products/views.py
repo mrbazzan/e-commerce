@@ -1,11 +1,11 @@
 from django.shortcuts import render
-from rest_framework import viewset
+from rest_framework import viewsets
 
 from .serializer import ProductSerializer
 from .models import Product
 
 
-class Product(viewset.ViewSet):
+class ProductViewSet(viewsets.ViewSet):
     def list(self, request):
         pass
 
@@ -18,5 +18,5 @@ class Product(viewset.ViewSet):
     def update(self, request, pk=None):
         pass
 
-    def delete(self, request, pk=None):
+    def destroy(self, request, pk=None):
         pass
