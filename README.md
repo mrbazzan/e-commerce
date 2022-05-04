@@ -93,6 +93,10 @@ User
 
 To get started:
 -
+
+- Clone the repository
+
+
 - Setup and Activate virtual environment
 ```shell
     python3 -m venv venv/
