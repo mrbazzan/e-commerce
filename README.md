@@ -84,6 +84,13 @@ Products
   - **STATUS CODE** ``204``
 
 
+User
+- 
+  - **Endpoint** ``GET`` `/api/user`
+  - Get a random user.
+  - **STATUS CODE** ``200``
+
+
 To get started:
 -
 - Setup and Activate virtual environment

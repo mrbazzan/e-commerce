@@ -1,9 +1,12 @@
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from rest_framework import viewsets, status
 from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .serializer import ProductSerializer
-from .models import Product
+from .models import Product, User
+
+import random
 
 
 class ProductViewSet(viewsets.ViewSet):
@@ -47,3 +50,14 @@ class ProductViewSet(viewsets.ViewSet):
             {"delete": f"Product(id={pk}) successfully deleted."},
             status=status.HTTP_204_NO_CONTENT
         )
+
+
+class UserAPIView(APIView):
+    def get(self, _):
+        try:
+            user = random.choice(User.objects.all())
+        except IndexError:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+        return Response({
+            "id": user.id
+        }, status=status.HTTP_200_OK)
