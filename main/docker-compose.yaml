@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - ".:/app"
+    depends_on:  # db should run before backend
+      - db
+
+  db:
+    image: mysql:5.7
+    restart: always  # prevent mysql stopping abruptly.
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: user
+    volumes:  # store mysql data
+      - ".dbdata:/var/lib/mysql"
+    ports:
+      - "33067:3306"
