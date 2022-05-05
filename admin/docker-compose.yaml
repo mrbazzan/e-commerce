@@ -3,12 +3,11 @@ version: "3.8"
 services:
   backend:
     build:
-      context: admin
+      context: .
     ports:
       - "8080:8080"
     volumes:
-      - "./admin:/app"
-      - /app/admin_venv/
+      - ".:/app"
     depends_on:  # db should run before backend
       - db
 
