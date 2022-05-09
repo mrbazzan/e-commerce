@@ -1,9 +1,24 @@
 
 # ECOMMERCE APPLICATION
 
-The application is containerized in a docker-compose.yaml file.
+This is a microservice application with the admin developed in Django, and the main app
+developed in Flask.
 
-Tools: `podman` and `python`
+The two applications are connected using an online RabbitMQ broker.
+
+```mermaid
+graph TD;
+    A[ADMIN]---->B[MYSQL DB];
+    C[USER]---->D[MYSQL DB2];
+```
+
+```mermaid
+flowchart LR;
+    ADMIN---|RABBITMQ|USER
+```
+Each app is containerized in a docker-compose.yaml file.
+
+Tools: `podman`, `podman-compose`, and `python`
 
 #Endpoints:
 
@@ -108,6 +123,15 @@ To get started:
     pip install -r requirements.txt
 ```
 
-- Run `podman-compose up --build`
+- Change to the admin directory and run the admin app
+```shell
+  cd admin
+  podman-compose up
+```
 
+- Change to the main directory and run the user app
+```shell
+  cd main
+  podman-compose up
+```
 NOTE: The setup process also works for `docker`.
