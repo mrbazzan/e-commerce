@@ -10,7 +10,6 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 WORKDIR /app
 COPY requirements.txt /app/requirements.txt
 RUN pip install -r requirements.txt
-COPY . /app/main
+COPY . /app
 
 ENV FLASK_DEBUG=1
-CMD flask run --host "0.0.0.0" --port 8000
