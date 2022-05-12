@@ -9,7 +9,7 @@ db = SQLAlchemy()
 class Product(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=False)
     title = db.Column(db.String(200))
-    images = db.Column(db.String(200))
+    image = db.Column(db.String(200))
 
 
 class ProductUser(db.Model):
