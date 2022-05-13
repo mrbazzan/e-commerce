@@ -14,13 +14,13 @@ class ProductViewSet(viewsets.ViewSet):
     def list(self, request):
         products = Product.objects.all()
         serializer = ProductSerializer(products, many=True)
-        publish()
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     def create(self, request):
         serializer = ProductSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        publish("product_created", serializer.data)
         return Response(serializer.data, status=status.HTTP_201_CREATED)
 
     @staticmethod
@@ -37,6 +37,7 @@ class ProductViewSet(viewsets.ViewSet):
         serializer = ProductSerializer(instance=product, data=request.data, partial=partial)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        publish("product_updated", serializer.data)
         return Response(serializer.data, status=status.HTTP_202_ACCEPTED)
 
     def update(self, request, pk=None):
@@ -48,6 +49,7 @@ class ProductViewSet(viewsets.ViewSet):
     def destroy(self, request, pk=None):
         product = self.get_product(pk)
         product.delete()
+        publish("product_deleted", pk)
         return Response(
             {"delete": f"Product(id={pk}) successfully deleted."},
             status=status.HTTP_204_NO_CONTENT
