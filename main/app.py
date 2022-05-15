@@ -1,8 +1,8 @@
-from flask import Flask
+from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_migrate import Migrate
 
-from models import db
+from models import db, Product
 
 
 main = Flask(__name__)
@@ -14,6 +14,7 @@ db.init_app(main)
 migrate = Migrate(main, db)
 
 
-@main.route("/")
+@main.route("/api/products/")
 def index():
-    return "hello, boss"
+    products = Product.query.all()
+    return jsonify(products)
