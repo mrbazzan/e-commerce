@@ -14,5 +14,5 @@ urlpatterns = [
         "patch": "partial_update",
         "delete": "destroy"
     })),
-    path("user", UserAPIView.as_view())
+    path("user/", UserAPIView.as_view())
 ]
