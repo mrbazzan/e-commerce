@@ -5,6 +5,8 @@ services:
     build:
       context: .
     command: "flask run --host '0.0.0.0' --port 8000"
+    networks:
+      - main_network
     ports:
       - "8000:8000"
     volumes:
@@ -31,3 +33,7 @@ services:
       - ".dbdata:/var/lib/mysql"
     ports:
       - "33067:3306"
+
+networks:
+  main_network:
+      name: custom_network

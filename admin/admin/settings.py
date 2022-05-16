@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-+c+&my68-akt99&x&^jp@_$te8kj4m7%u54^3rqq#7wstse@8g
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["10.89.2.1", "127.0.0.1"]
+# change this to the address of "host.containers.internal" in /etc/hosts
 
 
 # Application definition
